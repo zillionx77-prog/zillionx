@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const quickLinks = [
-    { label: 'Home', href: '/zillionx/' },
+    { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'About', href: '/about' },
