@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Send, MapPin, Phone, Mail, Clock, Users, Target, Sparkles } from 'lucide-react';
+import { Send, MapPin, Phone, Mail, Clock, Users, Target, Sparkles, CheckCircle } from 'lucide-react';
 
 const AboutContactHm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,6 +13,7 @@ const AboutContactHm = () => {
     budget: '',
     message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const services = [
@@ -51,12 +52,12 @@ const AboutContactHm = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-    setFormData({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log('Form submitted:', formData);
+  //   // Handle form submission here
+  //   setFormData({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
+  // };
 
   // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   //   setFormData({
@@ -65,12 +66,48 @@ const AboutContactHm = () => {
   //   });
   // };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        budget: '',
+        message: ''
+      });
+    }, 3000);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-50 to-blue-100">
+        <div className="text-center animate-fade-in-up">
+          <div className="bg-green-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle size={48} className="text-green-500" />
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Thank You!</h2>
+          <p className="text-xl text-gray-600 mb-6">
+            Your message has been sent successfully. We'll get back to you within 24 hours.
+          </p>
+          <div className="animate-spin w-8 h-8 border-4 border-sky-500 border-t-transparent rounded-full mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section id="about" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-sky-50 relative overflow-hidden">
@@ -140,7 +177,7 @@ const AboutContactHm = () => {
               </div>
               <div className="flex items-center space-x-3 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
                 <MapPin size={20} className="text-sky-500" />
-                <span className="text-gray-700">4/127 Bharathiyar street, TC 12345</span>
+                <span className="text-gray-700">4/127 Bharathiyar street,porur rd,kovur,ch-128</span>
               </div>
             </div>
           </div>
@@ -241,7 +278,7 @@ const AboutContactHm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -257,7 +294,7 @@ const AboutContactHm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -275,7 +312,7 @@ const AboutContactHm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -290,7 +327,7 @@ const AboutContactHm = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                     placeholder="Enter your company name"
                   />
                 </div>
@@ -307,7 +344,7 @@ const AboutContactHm = () => {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                   >
                     <option value="">Select a service</option>
                     {services.map((service) => (
@@ -325,7 +362,7 @@ const AboutContactHm = () => {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                   >
                     <option value="">Select budget range</option>
                     {budgetRanges.map((range) => (
@@ -346,7 +383,7 @@ const AboutContactHm = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 transform focus:scale-105"
                   placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
                 ></textarea>
               </div>

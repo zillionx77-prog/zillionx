@@ -81,7 +81,7 @@ const Home = () => {
               className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-400 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             >
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('about')}
                 className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-pulse"
               >
                 Get Started

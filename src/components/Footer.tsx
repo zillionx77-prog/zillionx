@@ -13,7 +13,8 @@ const Footer = () => {
   const services = [
     {label: 'Web Development', href: '/services'},
     {label: 'App Development', href: '/services'},
-    {label: 'Digital Marketing', href: '/services'},
+    {label: 'Paid Ads', href: '/services'},
+    {label: 'Video Editing', href: '/services'},
     {label: 'Social Media Marketing', href: '/services'},
   ];
 
@@ -58,7 +59,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
                 <MapPin size={18} className="text-sky-500" />
-                <span className="text-gray-300">4/127 Bharathiyar street</span>
+                <span className="text-gray-300">4/127 Bharathiyar street,porur rd,kovur,ch-128</span>
               </div>
             </div>
           </div>

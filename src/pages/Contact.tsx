@@ -56,7 +56,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: '4/127 Bharathiyar street',
+      details: '4/127 Bharathiyar street,porur rd,kovur,ch-128',
       description: 'Kovur, CH 600128'
     },
     {

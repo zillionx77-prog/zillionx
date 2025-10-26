@@ -125,7 +125,7 @@ const ServicesHm = () => {
         >
           <button 
             onClick={() => {
-              const element = document.getElementById('contact');
+              const element = document.getElementById('about');
               if (element) element.scrollIntoView({ behavior: 'smooth' });
             }}
             className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-110 hover:rotate-1 shadow-lg hover:shadow-2xl animate-pulse"
